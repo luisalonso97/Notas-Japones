@@ -22,7 +22,7 @@ sudo pacman -S noto-fonts-cjk
 latexmk -lualatex kanji.tex
 ```
 
-Importante tener usar el engine `lualatex`` y tener el `.latexmkrc` para el
+Importante tener usar el engine `lualatex` y tener el `.latexmkrc` para el
 enlazado correcto de las plantillas.
 
 ## 一年目 (2025)
