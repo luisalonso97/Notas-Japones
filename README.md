@@ -2,9 +2,32 @@
 
 Notas tomadas de mis clases en [Futaba](https://academiafutaba.com/).
 
-# 一年目 (2025)
+## Software
 
-## Lv1 ~ Enero - Abril
+TeX Live con soporte de Japónes:
+
+```bash
+sudo pacman -S texlive-meta texlive-langjapanese
+```
+
+Fuente utilizada:
+
+```bash
+sudo pacman -S noto-fonts-cjk
+```
+
+## Compilación
+
+```bash
+latexmk -lualatex kanji.tex
+```
+
+Importante tener usar el engine lualatex y tener el `.latexmkrc` para el
+enlazado correcto de las plantillas.
+
+## 一年目 (2025)
+
+### Lv1 ~ Enero - Abril
 
 Horario: 09:00 - 12:00
 
