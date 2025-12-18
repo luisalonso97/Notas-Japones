@@ -2,6 +2,8 @@
 
 Notas tomadas de mis clases en [Futaba](https://academiafutaba.com/).
 
+Repositorio principal: [git.lalonso.com](https://git.lalonso.com/luis_alonso/Notas-Japones)
+
 ## Software
 
 TeX Live con soporte de Japónes:
