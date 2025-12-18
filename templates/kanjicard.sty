@@ -1,0 +1,57 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{kanjicard}[2025/12/16 Kanji card environment]
+
+\RequirePackage{xparse}
+\RequirePackage[most]{tcolorbox}
+\RequirePackage{tabularx}
+\RequirePackage{luatexja-ruby}
+
+\NewDocumentCommand{\ShowOrBlank}{m}{%
+  \IfBlankTF{#1}{\rule{3cm}{0.4pt}}{#1}%
+}
+
+\NewDocumentCommand{\KExample}{m m m}{%
+  #1 & #2 & #3\\
+}
+
+\NewDocumentEnvironment{kanjicard}{ m m m +b }
+% #1 = Kanji, #2 = onyomi, #3 = kunyomi, body = examples (rows via \KExample)
+{%
+\begin{tcolorbox}[
+  enhanced,
+  colback=white,
+  colframe=black,
+  boxrule=0.6pt,
+  left=3mm,right=3mm,top=2mm,bottom=2mm
+]
+  \noindent
+  \begin{minipage}[t]{0.23\linewidth}
+    \centering
+    {\fontsize{52}{56}\selectfont #1}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.73\linewidth}
+    \begin{tcolorbox}[
+      colback=white,
+      colframe=black,
+      boxrule=0.5pt,
+      arc=1mm,
+      left=2mm,right=2mm,top=1mm,bottom=1mm
+    ]
+      \begin{tabularx}{\linewidth}{@{}l X@{}}
+        \textbf{\ruby{訓|読|み}{おん|よ|}} & \ShowOrBlank{#3}\\
+        \textbf{\ruby{音|読|み}{くん|よ|}} & \ShowOrBlank{#2}\\
+      \end{tabularx}
+    \end{tcolorbox}
+  \end{minipage}
+
+  \tcblower
+  % --- Bottom: 3-column examples table ---
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}X
+                                >{\raggedright\arraybackslash}X
+                                >{\raggedright\arraybackslash}X@{}}
+    \textbf{\ruby{漢|字}{かん|じ}} & \textbf{かな} & \textbf{\ruby{意|味}{い|み}}\\ \hline
+    #4
+  \end{tabularx}
+\end{tcolorbox}
+}
+{}

@@ -1,86 +1,162 @@
-\title{漢字 LV3}
-\author{アロンゾ　ルイス}
 
 \documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
-\usepackage{luatexja-fontspec}
+
+\makeatletter
+\makeatother
+
+\title{\ruby{漢|字}{かん|じ} LV3}
+
+\author{アロンゾ　ルイス}
+
 \setmainjfont{Noto Serif CJK JP}
-
-\usepackage{xparse}
-\usepackage[most]{tcolorbox}
-\usepackage{tabularx}
-
-
-% A small helper: if an argument is empty, show a blank line to fill in
-\NewDocumentCommand{\ShowOrBlank}{m}{%
-  \IfBlankTF{#1}{\rule{3cm}{0.4pt}}{#1}%
-}
-
-\NewDocumentEnvironment{kanjicard}{ m m m +b }
-% #1 = Kanji, #2 = onyomi, #3 = kunyomi, body = examples
-{%
-\begin{tcolorbox}[
-  enhanced,
-  colback=white,
-  colframe=black,
-  boxrule=0.6pt,
-  arc=2mm,
-  left=3mm,right=3mm,top=2mm,bottom=2mm
-]
-  % top row: big kanji (left) + readings box (right)
-  \noindent
-  \begin{minipage}[t]{0.23\linewidth}
-    \centering
-    {\fontsize{52}{56}\selectfont #1}
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.73\linewidth}
-    \begin{tcolorbox}[
-      colback=white,
-      colframe=black,
-      boxrule=0.5pt,
-      arc=1mm,
-      left=2mm,right=2mm,top=1mm,bottom=1mm
-    ]
-      \begin{tabularx}{\linewidth}{@{}l X@{}}
-        \textbf{音} & \ShowOrBlank{#2}\\
-        \textbf{訓} & \ShowOrBlank{#3}\\
-      \end{tabularx}
-    \end{tcolorbox}
-  \end{minipage}
-
-  % bottom area: examples
-  \tcblower
-  #4
-\end{tcolorbox}
-}
-{}
-
+\usepackage{luatexja-fontspec}
+\usepackage{kanjicard}
 
 \begin{document}
-
+\pagestyle{empty}
 \maketitle{}
 
-\begin{kanjicard}{海}{カイ}{うみ}
-\begin{itemize}
-  \item 海へ行きます。 (I go to the sea.)
-  \item 海外で勉強したい。 (I want to study abroad.)
-\end{itemize}
+\begin{kanjicard}{口}{コウ}{くち}
+  \KExample{口}{ぐち}{Boca}
+  \KExample{東口}{ひがし・ぐち}{Salida este}
+  \KExample{入口}{いり・ぐち}{Entrada}
+  \KExample{出口}{で・ぐち}{Salida}
 \end{kanjicard}
 
-\begin{kanjicard}{語}{}{かた.る}
-\begin{itemize}
-\item 日本語をできます。(I can speak japanese.)
-\end{itemize}
+\begin{kanjicard}{東}{ひがし}{トウ}
+  \KExample{東口}{ひがし・ぐち}{Puerta este}
+  \KExample{東京}{とう・きょう}{Tokio}
+  \KExample{関東}{かん・とう}{Kanto}
 \end{kanjicard}
 
+\begin{kanjicard}{西}{にし}{セイ・サイ}
+  \KExample{西口}{にし・ぐち}{Salida oeste}
+  \KExample{西洋}{せい・よう}{Países Occidentales}
+  \KExample{関西}{かん・さい}{Región de Kansai}
+\end{kanjicard}
 
+\begin{kanjicard}{南}{みなみ}{メン}
+  \KExample{南口}{みなみ・ぐち}{Salida sur}
+  \KExample{南米}{なん・べい}{América del sur}
+  \KExample{南北}{なん・ぼく}{Sur y norte}
+\end{kanjicard}
 
-日本語のノート。数学: $a^2+b^2=c^2$。
+\begin{kanjicard}{北}{きた}{ホク・ホッ}
+  \KExample{北口}{きた・ぐち}{Salida norte}
+  \KExample{北米}{ほく・べい}{América del norte}
+  \KExample{北海道}{ほっ・かい・どう}{Hokkaido}
+\end{kanjicard}
 
-This is a test
+\begin{kanjicard}{町}{まち}{チョウ}
+  \KExample{町}{まち}{Pueblo, ciudad}
+  \KExample{町内}{ちょう・ない}{Barrio, vecindad}
+\end{kanjicard}
 
-Adj. な\rightarrow{} Adj. じゃなかたです。
+\begin{kanjicard}{寺}{てら}{ジ}
+  \KExample{お寺}{お・てら}{Templo budista}
+  \KExample{寺社}{じ・しゃ}{Templos y santuarios}
+\end{kanjicard}
 
-Videos stored.
+\begin{kanjicard}{店}{みせ}{テン}
+  \KExample{店}{みせ}{Tienda}
+  \KExample{書店}{しょ・てん}{Libreria}
+\end{kanjicard}
+
+\begin{kanjicard}{停}{と・まります}{テイ}
+  \KExample{停まります}{と・まります}{Parada (de transporte)}
+  \KExample{バス停}{バズ・てい}{Parada de autobus}
+\end{kanjicard}
+
+\begin{kanjicard}{枚}{}{マイ・バイ}
+  \KExample{四枚}{よん・まい}{Cuatro objetos delgados planos}
+  \KExample{数枚}{すう・まい}{Varios objetos delgados planos}
+\end{kanjicard}
+
+\begin{kanjicard}{個}{}{コ・カ}
+  \KExample{二個}{に・こ}{Dos objetos pequeños}
+  \KExample{個人}{こ・じん}{Individuo, privado}
+\end{kanjicard}
+
+\begin{kanjicard}{冊}{}{サツ・サク}
+  \KExample{三冊}{さん・さつ}{Tres libros, tres tomos}
+  \KExample{小冊子}{しょう・さつ・し}{Folleto}
+\end{kanjicard}
+
+\begin{kanjicard}{買}{か・います}{}
+  \KExample{買います}{か・います}{Comprar}
+  \KExample{買い物}{か・いもの}{Compras}
+\end{kanjicard}
+
+\begin{kanjicard}{金}{かね}{キン}
+  \KExample{お金}{お・かね}{Dinero}
+  \KExample{金}{きん}{Oro}
+  \KExample{金曜日}{きん・よう・び}{Viernes}
+  \KExample{金田}{かね・だ}{Kaneda (apellido)}
+\end{kanjicard}
+
+\begin{kanjicard}{円}{}{エン}
+  \KExample{円}{えん}{Yen}
+\end{kanjicard}
+
+\begin{kanjicard}{百}{}{ヒアク・ビアク・ピアク}
+  \KExample{二百}{に・ひゃく}{２００}
+  \KExample{三百}{さん・びゃく}{３００}
+  \KExample{六百}{ろ・ぴゃく}{６００}
+  \KExample{八百}{はっ・ぴゃく}{８００}
+\end{kanjicard}
+
+\begin{kanjicard}{千}{ち}{セン・ゼン}
+  \KExample{千円}{せん・えん}{１０００ yenes}
+  \KExample{三千}{さん・ぜん}{３０００}
+\end{kanjicard}
+
+\begin{kanjicard}{万}{}{マン・バン}
+  \KExample{一万円}{いち・まん・えん}{１０００ yenes}
+  \KExample{万国}{ばん・こく}{Todos los países}
+  \KExample{万歳}{ばん・ざい}{Banzai}
+\end{kanjicard}
+
+\begin{kanjicard}{楽}{楽・しい}{ガク・ラク・ゴウ}
+  \KExample{楽しい}{たの・しい}{Divertido}
+  \KExample{楽}{らく}{Comodo, sencillo}
+  \KExample{音楽}{おん・がく}{Música}
+\end{kanjicard}
+
+\begin{kanjicard}{嬉}{うれ・しい}{}
+  \KExample{嬉しい}{うれ・しい}{Féliz, alegre}
+\end{kanjicard}
+
+\begin{kanjicard}{良}{い・い/よ・い}{リョウ}
+  \KExample{良い}{い・い}{Está bien}
+  \KExample{良心}{りょう・しん}{Conciencia}
+\end{kanjicard}
+
+\begin{kanjicard}{来}{き・ます}{ライ}
+  \KExample{来ます}{き・ます}{Venir}
+  \KExample{来週}{らい・しゅう}{Próxima semana}
+  \KExample{未来}{み・らい}{Futuro}
+\end{kanjicard}
+
+\begin{kanjicard}{会}{あ・います}{カイ}
+  \KExample{会います}{あ・います}{Encontrarse}
+  \KExample{会議}{かい・ぎ}{Junta, reunión}
+  \KExample{大会}{たい・かい}{Competencia}
+\end{kanjicard}
+
+\begin{kanjicard}{休}{やす・みます}{キュウ}
+  \KExample{休みます}{やす・みます}{Descansar}
+  \KExample{休憩}{きゅう・けい}{Descanso, pausa}
+  \KExample{休日}{きゅう・じつ}{Día libre}
+\end{kanjicard}
+
+\begin{kanjicard}{本}{もと}{ホン}
+  \KExample{本}{ほん}{Libro}
+  \KExample{日本}{に・ほん}{Japón}
+\end{kanjicard}
+
+\begin{kanjicard}{京}{みやこ}{キョウ/ケイ/キン}
+  \KExample{東京}{とう・きょう}{Tokio}
+  \KExample{京都}{きょう・と}{Kioto}
+\end{kanjicard}
 
 \end{document}
-

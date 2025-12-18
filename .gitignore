@@ -4,3 +4,5 @@
 *.log
 *.synctex.gz
 *.aux
+**build/*
+*.ltjruby
