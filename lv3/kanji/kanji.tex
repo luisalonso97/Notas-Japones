@@ -1,22 +1,45 @@
-
 \documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
 
-\makeatletter
-\makeatother
-
 \title{\ruby{漢|字}{かん|じ} LV3}
-
 \author{アロンゾ　ルイス}
 
 \setmainjfont{Noto Serif CJK JP}
 \usepackage{luatexja-fontspec}
-\usepackage{kanjicard}
+\usepackage{kanjicard} % Custom Kanji card
+\usepackage{fancyhdr}
+
+% --- Page style ---
+\pagestyle{fancy}
+\fancyhf{} % clear header/footer
+
+% Footer: name + copyright on left, page number on right
+\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+\fancyfoot[R]{\thepage}
+
+% Optional: remove header rule and keep a footer rule
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Increase space reserved for header area
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{6pt} % distance from header to text
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
 
 \begin{document}
-\pagestyle{empty}
-\maketitle{}
+\setcounter{page}{1} % start page number here
 
-\begin{kanjicard}{口}{コウ}{くち}
+\raggedbottom
+\maketitle{}
+\thispagestyle{fancy}
+
+\begin{kanjicard}{口}{くち}{コウ/ク}
   \KExample{口}{ぐち}{Boca}
   \KExample{東口}{ひがし・ぐち}{Salida este}
   \KExample{入口}{いり・ぐち}{Entrada}
@@ -29,7 +52,7 @@
   \KExample{関東}{かん・とう}{Kanto}
 \end{kanjicard}
 
-\begin{kanjicard}{西}{にし}{セイ・サイ}
+\begin{kanjicard}{西}{にし}{セイ/サイ}
   \KExample{西口}{にし・ぐち}{Salida oeste}
   \KExample{西洋}{せい・よう}{Países Occidentales}
   \KExample{関西}{かん・さい}{Región de Kansai}
@@ -41,7 +64,7 @@
   \KExample{南北}{なん・ぼく}{Sur y norte}
 \end{kanjicard}
 
-\begin{kanjicard}{北}{きた}{ホク・ホッ}
+\begin{kanjicard}{北}{きた}{ホク/ホッ}
   \KExample{北口}{きた・ぐち}{Salida norte}
   \KExample{北米}{ほく・べい}{América del norte}
   \KExample{北海道}{ほっ・かい・どう}{Hokkaido}
@@ -67,17 +90,17 @@
   \KExample{バス停}{バズ・てい}{Parada de autobus}
 \end{kanjicard}
 
-\begin{kanjicard}{枚}{}{マイ・バイ}
+\begin{kanjicard}{枚}{}{マイ/バイ}
   \KExample{四枚}{よん・まい}{Cuatro objetos delgados planos}
   \KExample{数枚}{すう・まい}{Varios objetos delgados planos}
 \end{kanjicard}
 
-\begin{kanjicard}{個}{}{コ・カ}
+\begin{kanjicard}{個}{}{コ/カ}
   \KExample{二個}{に・こ}{Dos objetos pequeños}
   \KExample{個人}{こ・じん}{Individuo, privado}
 \end{kanjicard}
 
-\begin{kanjicard}{冊}{}{サツ・サク}
+\begin{kanjicard}{冊}{}{サツ/サク}
   \KExample{三冊}{さん・さつ}{Tres libros, tres tomos}
   \KExample{小冊子}{しょう・さつ・し}{Folleto}
 \end{kanjicard}
@@ -98,25 +121,25 @@
   \KExample{円}{えん}{Yen}
 \end{kanjicard}
 
-\begin{kanjicard}{百}{}{ヒアク・ビアク・ピアク}
+\begin{kanjicard}{百}{}{ヒアク/ビアク/ピアク}
   \KExample{二百}{に・ひゃく}{２００}
   \KExample{三百}{さん・びゃく}{３００}
   \KExample{六百}{ろ・ぴゃく}{６００}
   \KExample{八百}{はっ・ぴゃく}{８００}
 \end{kanjicard}
 
-\begin{kanjicard}{千}{ち}{セン・ゼン}
+\begin{kanjicard}{千}{ち}{セン/ゼン}
   \KExample{千円}{せん・えん}{１０００ yenes}
   \KExample{三千}{さん・ぜん}{３０００}
 \end{kanjicard}
 
-\begin{kanjicard}{万}{}{マン・バン}
+\begin{kanjicard}{万}{}{マン/バン}
   \KExample{一万円}{いち・まん・えん}{１０００ yenes}
   \KExample{万国}{ばん・こく}{Todos los países}
   \KExample{万歳}{ばん・ざい}{Banzai}
 \end{kanjicard}
 
-\begin{kanjicard}{楽}{楽・しい}{ガク・ラク・ゴウ}
+\begin{kanjicard}{楽}{楽・しい}{ガク/ラク/ゴウ}
   \KExample{楽しい}{たの・しい}{Divertido}
   \KExample{楽}{らく}{Comodo, sencillo}
   \KExample{音楽}{おん・がく}{Música}
@@ -160,3 +183,4 @@
 \end{kanjicard}
 
 \end{document}
+

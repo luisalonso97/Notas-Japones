@@ -22,6 +22,7 @@
   colback=white,
   colframe=black,
   boxrule=0.6pt,
+  opacityframe=0,
   left=3mm,right=3mm,top=2mm,bottom=2mm
 ]
   \noindent
@@ -35,11 +36,12 @@
       colframe=black,
       boxrule=0.5pt,
       arc=1mm,
+      opacityframe=0,
       left=2mm,right=2mm,top=1mm,bottom=1mm
     ]
       \begin{tabularx}{\linewidth}{@{}l X@{}}
-        \textbf{\ruby{訓|読|み}{おん|よ|}} & \ShowOrBlank{#3}\\
-        \textbf{\ruby{音|読|み}{くん|よ|}} & \ShowOrBlank{#2}\\
+        \textbf{\ruby{訓|読|み}{くん|よ|}} & \ShowOrBlank{#2}\\
+        \textbf{\ruby{音|読|み}{おん|よ|}} & \ShowOrBlank{#3}\\
       \end{tabularx}
     \end{tcolorbox}
   \end{minipage}
