@@ -1,0 +1,101 @@
+
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2025 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
+
+\setmainjfont{Noto Serif CJK JP}
+
+\usepackage{luatexja-fontspec}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{luatexja-ruby}
+\usepackage{tikz}
+
+\title{\ruby{第|１|６|課}{だい|||か} LV3}
+\author{アロンゾ　ルイス}
+
+% --- Page style ---
+\pagestyle{fancy}
+\fancyhf{} % clear header/footer
+
+% Footer: name + copyright on left, page number on right
+\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+\fancyfoot[R]{\thepage}
+
+% Optional: remove header rule and keep a footer rule
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Increase space reserved for header area
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{6pt} % distance from header to text
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\begin{document}
+\setcounter{page}{1}
+
+\raggedbottom
+\maketitle{}
+\thispagestyle{fancy}
+
+% Content
+\section{Usar ropa y accesorios}
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+  % Put your image file name here:
+  \node[anchor=south west, inner sep=0] (img) at (0,0)
+    {\includegraphics[scale=0.25]{assets/smartphone_schoolgirl_walk.png}};
+
+  % Normalized coordinate system: (0,0)=bottom-left, (1,1)=top-right of the image
+  \begin{scope}[x={(img.south east)}, y={(img.north west)}]
+
+    % --- target points (adjust these if you want) ---
+    \coordinate (upper) at (0.62,0.55); % top/upper body
+    \coordinate (lower) at (0.25,0.24); % lower body
+    \coordinate (bag)   at (0.95,0.25); % bag
+
+    % --- label positions (outside the image) ---
+    \node[anchor=east] (Lupper) at ( 1.06,0.72) {きます};
+    \node[anchor=east] (Llower) at (-0.06,0.34) {はきます};
+    \node[anchor=west] (Lbag)   at ( 1.06,0.25) {もちます};
+
+    % --- arrows ---
+    \draw[->, thick] (Lupper.west) -- (upper);
+    \draw[->, thick] (Llower.east) -- (lower);
+    \draw[->, thick] (Lbag.west)   -- (bag);
+
+  \end{scope}
+\end{tikzpicture}
+\end{figure}
+
+\textbf{Verbos para indicar vestir ropa:}
+
+\begin{tabular}{@{} l @{\ :\ } p{0.75\linewidth} @{}}
+きます (\ruby{着|ます}{き|})     & Para ropa que se usa por arriba de la cintura. \\
+はきます (\ruby{履|きます}{は|}) & Para ropa que se usa por debajo de la cintura. \\
+もちます (\ruby{持|ちます}{も|}) & Para cosas que se llevan en las manos. \\
+\end{tabular}
+
+\end{document}
+
