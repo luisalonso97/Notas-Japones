@@ -1,0 +1,9 @@
+{
+  "name": ".vscode local snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "tex", "path": "./tex.json" },
+      { "language": "latex", "path": "./tex.json" }
+    ]
+  }
+}
