@@ -1,0 +1,58 @@
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2025 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aligned_table_vocab}[2026/01/03 VocabTable environment]
+
+\RequirePackage{aligned_table_core}
+
+% Spacing around the separator symbol (":" or "-" etc.)
+\NewDocumentCommand{\VocabSep}{m}{\hspace{0.4em}#1\hspace{0.4em}}
+
+\makeatletter
+\newif\ifVT@first
+
+% Build \VT@spec from a comma-list like: l,l,P  (P becomes P{<width>})
+\newcommand{\VT@buildspec}[3]{%
+  \def\VT@spec{}%
+  \VT@firsttrue
+  \def\VT@P{P}%
+  \@for\VT@col:=#3\do{%
+    \ifVT@first
+      \VT@firstfalse
+    \else
+      \edef\VT@spec{\VT@spec @{\noexpand\VocabSep{#2}} }%
+    \fi
+    \ifx\VT@col\VT@P
+      \edef\VT@spec{\VT@spec P{#1} }%
+    \else
+      \edef\VT@spec{\VT@spec \VT@col }%
+    \fi
+  }%
+  \edef\VT@spec{@{}\VT@spec @{} }%
+}
+
+% Usage:
+% \begin{VocabTable}[<P width>][<sep>][<col list>] ... \end{VocabTable}
+% Defaults: width=0.75\linewidth, sep=:, cols=l,P
+\NewDocumentEnvironment{VocabTable}{ O{0.75\linewidth} O{:} O{l,P} }
+{%
+  \VT@buildspec{#1}{#2}{#3}%
+  \expandafter\tabular\expandafter{\VT@spec}%
+}
+{%
+  \endtabular
+}
+\makeatother
+

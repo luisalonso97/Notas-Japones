@@ -1,0 +1,54 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{aligned_table_plusheader}[2026/01/03 PlusHeaderTable environment]
+
+\RequirePackage{aligned_table_core}
+
+% Separator shown between columns (same visual as your original @{\ +\ })
+\newcommand{\PHTSep}{\ +\ }
+
+\makeatletter
+\newcount\PHTncols
+\newif\ifPHTfirst
+\newcommand{\PHTspec}{} % will hold the final tabular preamble
+
+% Build \PHTspec from a comma-list like: l,c,l,c
+\newcommand{\PHTbuildspec}[1]{%
+  \def\PHTspec{@{}}%
+  \PHTncols=0\relax
+  \PHTfirsttrue
+  \@for\PHTcol:=#1\do{%
+    \advance\PHTncols by 1\relax
+    \ifPHTfirst
+      \PHTfirstfalse
+    \else
+      \edef\PHTspec{\PHTspec @{\noexpand\PHTSep} }%
+    \fi
+    \edef\PHTspec{\PHTspec \PHTcol }%
+  }%
+  \edef\PHTspec{\PHTspec @{} }%
+}
+\makeatother
+
+% Usage:
+%   \begin{PlusHeaderTable}{<title>} ... \end{PlusHeaderTable}
+%   \begin{PlusHeaderTable}{<title>}[<color>][<col list>] ... \end{PlusHeaderTable}
+% Defaults: no color, columns = l,c,l
+\NewDocumentEnvironment{PlusHeaderTable}{ m O{} O{l,c,l} }
+{%
+  % Needed because \PHTbuildspec uses \@for (internal macro)
+  \makeatletter
+  \PHTbuildspec{#3}%
+  \makeatother
+
+  \begin{center}
+  \renewcommand{\arraystretch}{1.2}%
+  % IMPORTANT: expand \PHTspec when starting tabular
+  \expandafter\tabular\expandafter{\PHTspec}%
+    \if\relax\detokenize{#2}\relax\else\rowcolor{#2}\fi
+    \multicolumn{\the\PHTncols}{c}{\textbf{#1}}\\
+    \hline
+}
+{%
+  \endtabular
+  \end{center}
+}
