@@ -1,6 +1,5 @@
-
 % SPDX-License-Identifier: CC-BY-SA-4.0
-% Copyright (c) 2025 Luis Alonso
+% Copyright (c) 2026 Luis Alonso
 %
 % This file is part of luis_alonso/Notas-Japones.
 %
@@ -14,56 +13,23 @@
 % Note: Third-party content (if any) is excluded from this license and is marked where used.
 
 \documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
-
-\setmainjfont{Noto Serif CJK JP}
-
-\usepackage{luatexja-fontspec}
-\usepackage{graphicx}
-\usepackage{fancyhdr}
-\usepackage{luatexja-ruby}
-\usepackage{tikz}
+\usepackage{setup}
 
 \title{\ruby{第|１６|課}{だい||か} LV3}
 \author{アロンゾ　ルイス}
 
-% --- Page style ---
-\pagestyle{fancy}
-\fancyhf{} % clear header/footer
-
-% Footer: name + copyright on left, page number on right
-\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
-\fancyfoot[R]{\thepage}
-
-% Optional: remove header rule and keep a footer rule
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
-% Increase space reserved for header area
-\setlength{\headheight}{0pt}
-\setlength{\headsep}{6pt} % distance from header to text
-
-\fancypagestyle{plain}{%
-  \fancyhf{}
-  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
-  \fancyfoot[R]{\thepage}
-  \renewcommand{\headrulewidth}{0pt}
-  \renewcommand{\footrulewidth}{0.4pt}
-}
-
 \begin{document}
 \setcounter{page}{1}
 
-\raggedbottom
 \maketitle{}
 \thispagestyle{fancy}
 
-% Content
 \section{Usar ropa y accesorios}
 
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
-  % Put your image file name here:
+  % Image
   \node[anchor=south west, inner sep=0] (img) at (0,0)
     {\includegraphics[scale=0.25]{assets/smartphone_schoolgirl_walk.png}};
 
@@ -87,23 +53,91 @@
 
   \end{scope}
 \end{tikzpicture}
+\caption{Uso de los verbos para usar ropa y accesorios.}
 \end{figure}
 
-\textbf{Verbos para indicar vestir ropa:}
+\begin{PlusHeaderTable}{Verbos para usar ropa}
+  Pieza de ropa & を & \ruby{着|ます}{き|} \\
+  Pieza de ropa & を & \ruby{履|きます}{は|} \\
+  Pieza de ropa & を & \ruby{持|ちます}{も|} \\
+\end{PlusHeaderTable}
 
-\begin{tabular}{@{} l @{\ :\ } p{0.75\linewidth} @{}}
-  きます (\ruby{着|ます}{き|})     & Para ropa que se usa por arriba de la cintura. \\
+\begin{VocabTable}[0.75\linewidth][:]
+  きます   (\ruby{着|ます}{き|})   & Para ropa que se usa por arriba de la cintura. \\
   はきます (\ruby{履|きます}{は|}) & Para ropa que se usa por debajo de la cintura. \\
-  もちます (\ruby{持|ちます}{も|}) & Para cosas que se llevan en las manos. \\
-\end{tabular} \\
+  もちます (\ruby{持|ちます}{も|}) & Para cosas que se llevan en las manos.         \\
+\end{VocabTable}
+\medskip
 
 \textbf{Tallas de ropa:}
 
-\begin{tabular}{@{} l @{\ -\ } p{0.75\linewidth} @{}}
-  S (エズ) & サイズ \\
-  M (エム) & サイズ \\
-  L (エル) & サイズ \\
-\end{tabular} \\
+\begin{VocabTable}[0.45\linewidth][-][l,l,P]
+  S (エズ) & サイズ & Talla chica   \\
+  M (エム) & サイズ & Talla mediana \\
+  L (エル) & サイズ & Talla grande  \\
+\end{VocabTable}
+\medskip
+
+\Needspace{2\baselineskip}
+\textbf{Ejemplos de uso:}
+\begin{itemize}
+  \item コートを\ruby{着|ます}{き|} - (Usar un abrigo)
+  \item ジーンズを\ruby{履|きます}{は|} - (Usar jeans, pantalones de mezclilla)
+  \item くつを\ruby{履|きます}{は|} - (Usar zapatos)
+  \item くつしたを\ruby{履|きます}{は|} - (Usar calcetines)
+\end{itemize}
+
+\section{Colores \ruby{色}{いろ}}
+
+\begin{paracol}{2}
+  \begin{itemize}
+    \item \ruby{黄|色}{き|いろ}: Amarillo
+    \item \ruby{白}{しろ}: Blanco
+    \item \ruby{茶|色}{ちゃ|いろ}: Café
+    \item \ruby{赤}{あか}: Rojo
+    \item \ruby{紫}{むらさき}: Púrpura
+  \end{itemize}
+  \switchcolumn
+  \begin{itemize}
+    \item \ruby{黒}{くろ}: Negro
+    \item オレンジ: Naranja
+    \item ピンク: Rosa
+    \item \ruby{緑}{みどり}: Verde
+    \item グレー: Gris
+  \end{itemize}
+\end{paracol}
+
+\section{こそあど}
+
+El sistema こそあど es un conjunto de demostrativos del japonés que se usan para
+señalar personas, cosas, lugares o direcciones, según la distancia psicológica
+o física entre el hablante, el oyente y el objeto.
+
+\begin{table}[h!]
+  \centering
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+    \hline
+    \textbf{Categoría} & \textbf{Cerca del hablante (こ)} & \textbf{Cerca del oyente (そ)} & \textbf{Lejos de ambos (あ)} & \textbf{Interrogativo (ど)} \\
+    \hline
+    Cosa & これ & それ & あれ & どれ \\
+    \hline
+    Determinante + sus. & この & その & あの &  \\
+    \hline
+    Lugar & ここ & そこ & あそこ & どこ \\
+    \hline
+    Dirección & こちら & そちら & あちら & どちら \\
+    \hline
+    Persona & この人 & その人 & あの人 & どの人 \\
+    \hline
+    Tipo / manera & こんな & そんな & あんな & どんな \\
+    \hline
+  \end{tabular}
+  \caption{Sistema de demostrativos japoneses こそあど}
+\end{table}
+
+Los demostrativos これ・それ・あれ se usan solos, mientras que この・その・あの deben ir siempre
+seguidos de un sustantivo.
 
 \end{document}
 
