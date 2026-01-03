@@ -1,0 +1,56 @@
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2026 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{setup}[2026/01/02 Notes config]
+
+\RequirePackage{luatexja-fontspec}
+\RequirePackage{graphicx}
+\RequirePackage{fancyhdr}
+\RequirePackage{luatexja-ruby}
+\RequirePackage{tikz}
+\RequirePackage{aligned_table_plusheader}
+\RequirePackage{aligned_table_vocab}
+\RequirePackage{titlesec}
+\RequirePackage{needspace}
+\RequirePackage{paracol}
+
+% Fonts
+\setmainjfont{Noto Serif CJK JP}
+
+% Section style
+\titleformat{\section}[block]
+  {\normalfont\Large\bfseries\itshape}
+  {\thesection}{1em}{}
+  [\vspace{0.3ex}\titlerule]
+\titlespacing*{\section}{0pt}{2.0ex}{1.0ex}
+
+% Fancy footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{6pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
