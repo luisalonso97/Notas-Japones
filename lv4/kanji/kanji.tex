@@ -1,0 +1,160 @@
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2025 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
+
+\title{\ruby{漢|字}{かん|じ} LV4}
+\author{アロンゾ　ルイス}
+
+\setmainjfont{Noto Serif CJK JP}
+\usepackage{luatexja-fontspec}
+\usepackage{kanjicard} % Custom Kanji card
+\usepackage{fancyhdr}
+
+% --- Page style ---
+\pagestyle{fancy}
+\fancyhf{} % clear header/footer
+
+% Footer: name + copyright on left, page number on right
+\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+\fancyfoot[R]{\thepage}
+
+% Optional: remove header rule and keep a footer rule
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Increase space reserved for header area
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{6pt} % distance from header to text
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\begin{document}
+\setcounter{page}{1} % start page number here
+
+\raggedbottom
+\maketitle{}
+\thispagestyle{fancy}
+
+\begin{kanjicard}{私}{わたし}{シ}
+  \KExample{私}{わたし}{Yo}
+  \KExample{私立大学}{し・りつ・だい・がく}{Universidad privada}
+\end{kanjicard}
+
+\begin{kanjicard}{父}{ちち}{フ/ブ/ホ}
+  \KExample{父}{ちち}{Padre (mio)}
+  \KExample{祖父}{そ・ふ}{Abuelo (mio)}
+  \KExample{お父さん}{お・とう・さん}{Padre de alguien mas}
+\end{kanjicard}
+
+\begin{kanjicard}{母}{はは}{ボ/ボウ/モ}
+  \KExample{母}{はは}{Madre (mia)}
+  \KExample{祖母}{そ・ぼ}{Abuela (mia)}
+  \KExample{お母さん}{お・か・さん}{Madre (de alguien mas)}
+\end{kanjicard}
+
+\begin{kanjicard}{子}{こ}{シ/ス}
+  \KExample{子ども}{こ・ども}{Niño/a}
+  \KExample{息子}{むす・こ}{Hijo}
+\end{kanjicard}
+
+\begin{kanjicard}{国}{くに}{コク}
+  \KExample{国}{くに}{Pais}
+  \KExample{外国}{がいこく}{Pais extranjero}
+  \KExample{中国}{ちゅうごく}{China}
+\end{kanjicard}
+
+\begin{kanjicard}{男}{おとこ}{ダン}
+  \KExample{男}{おとこ}{Masculino}
+  \KExample{男の子}{おとこ・の・こ}{Niño}
+  \KExample{男の人}{おとこ・の・ひと}{Hombre}
+\end{kanjicard}
+
+\begin{kanjicard}{女}{おんな}{ショ}
+  \KExample{女}{おんな}{Mujer/Femenino}
+  \KExample{女の子}{おんな・の・こ}{Niña}
+  \KExample{女の人}{おんな・の・ひと}{Mujer}
+\end{kanjicard}
+
+\begin{kanjicard}{人}{ひと}{ジン/ニン}
+  \KExample{人}{ひと}{Persona}
+  \KExample{メキシコ人}{メキシコ・じん}{Nacionalidad mexicana}
+\end{kanjicard}
+
+\begin{kanjicard}{外}{そと}{ガイ}
+  \KExample{海外}{かいがい}{Extranjero}
+  \KExample{外}{そと}{Exterior/Fuera}
+  \KExample{外国人}{がいこくじん}{Persona extranjera}
+\end{kanjicard}
+
+\begin{kanjicard}{語}{かたります}{ゴ}
+  \KExample{言語}{げんご}{Idioma}
+  \KExample{外国語}{がいこくご}{Idioma extranjero}
+  \KExample{日本語}{にほんご}{Idioma Japonés}
+\end{kanjicard}
+
+\begin{kanjicard}{本}{}{ほん}
+  \KExample{本}{ほん}{Libro}
+  \KExample{日本}{にほん}{Japón}
+  \KExample{本屋}{ほんや}{Librería}
+\end{kanjicard}
+
+\begin{kanjicard}{英}{}{エイ}
+  \KExample{英語}{えいご}{Idioma Inglés}
+  \KExample{英国}{えいこく}{Gran Bretaña}
+\end{kanjicard}
+
+\begin{kanjicard}{中}{なか}{ジュウ/チュウ}
+  \KExample{中国語}{ちゅう・ごく・ご}{Idioma Chino}
+  \KExample{中}{なか}{Dentro}
+  \KExample{勉強中}{べん・きょう・ちゅう}{Estudiando actualmente}
+\end{kanjicard}
+
+\begin{kanjicard}{人}{ひと}{ジン/ニン}
+  \KExample{人}{ひと}{Persona}
+  \KExample{中国人}{ちゅうごくじん}{Nacionalidad china}
+\end{kanjicard}
+
+\begin{kanjicard}{好}{好き}{コウ}
+  \KExample{好き}{すき}{Gustar}
+  \KExample{友好的}{ゆうこうてき}{Amigable}
+\end{kanjicard}
+
+\begin{kanjicard}{読}{よ・みます}{ドク/トク}
+  \KExample{読書}{どく・しょ}{Lectura}
+  \KExample{読みます}{よ・みます}{Leer}
+  \KExample{読解}{どっ・かい}{Comprension lectora}
+\end{kanjicard}
+
+\begin{kanjicard}{書}{か・きます}{ジョ}
+  \KExample{読書}{どく・しょ}{Lectura}
+  \KExample{書きます}{か・きます}{Escribir}
+  \KExample{書道}{しょ・どう}{Caligrafía}
+\end{kanjicard}
+
+\begin{kanjicard}{何}{なに/なん}{}
+  \KExample{何}{なに}{Qué?}
+  \KExample{何人}{なん・にん}{Cuantas personas?}
+\end{kanjicard}
+
+\end{document}
+
+しんせき = Familiares
+
