@@ -1,0 +1,210 @@
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2026 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{bracediagram}[2026/01/17 v0.1 Brace-to-box diagram]
+
+\RequirePackage{tikz}
+\usetikzlibrary{calc,decorations.pathreplacing,arrows.meta}
+\RequirePackage{xparse}
+\RequirePackage{expl3}
+
+\ExplSyntaxOn
+
+% ---------------------------
+% Storage + defaults
+% ---------------------------
+\tl_new:N \bd_box_width_tl
+\tl_new:N \bd_box_height_tl
+\tl_new:N \bd_row_sep_tl
+\tl_new:N \bd_col_sep_tl
+\tl_new:N \bd_brace_xsep_tl
+\tl_new:N \bd_label_sep_tl
+\tl_new:N \bd_left_extra_tl
+\tl_new:N \bd_right_extra_tl
+\tl_new:N \bd_brace_extra_tl
+\tl_new:N \bd_arrow_extra_tl
+
+\tl_set:Nn \bd_box_width_tl  {4.8cm}
+\tl_set:Nn \bd_box_height_tl {9mm}
+\tl_set:Nn \bd_row_sep_tl    {4mm}
+\tl_set:Nn \bd_col_sep_tl    {7cm}
+\tl_set:Nn \bd_brace_xsep_tl {2mm}
+\tl_set:Nn \bd_label_sep_tl  {2mm}
+
+\tl_clear:N \bd_left_extra_tl
+\tl_clear:N \bd_right_extra_tl
+\tl_clear:N \bd_brace_extra_tl
+\tl_clear:N \bd_arrow_extra_tl
+
+\seq_new:N \l_bd_left_seq
+\seq_new:N \l_bd_right_seq
+\int_new:N \l_bd_left_int
+\int_new:N \l_bd_right_int
+
+\tl_new:N \bd_label_xshift_tl
+\tl_new:N \bd_label_yshift_tl
+\tl_set:Nn \bd_label_xshift_tl {10pt}
+\tl_set:Nn \bd_label_yshift_tl {0pt}
+
+
+\newif\ifbd_draw_arrow
+\bd_draw_arrowtrue
+
+% ---------------------------
+% pgfkeys options
+% (NOTE: expl3 ignores literal spaces, so we insert \space explicitly)
+% ---------------------------
+\pgfkeys{
+  /bracediagram/.is\space family,
+  /bracediagram,
+
+  box\space width/.code  = \tl_set:Nn \bd_box_width_tl  {#1},
+  box\space height/.code = \tl_set:Nn \bd_box_height_tl {#1},
+  row\space sep/.code    = \tl_set:Nn \bd_row_sep_tl    {#1},
+  col\space sep/.code    = \tl_set:Nn \bd_col_sep_tl    {#1},
+  brace\space xsep/.code = \tl_set:Nn \bd_brace_xsep_tl {#1},
+  label\space sep/.code  = \tl_set:Nn \bd_label_sep_tl  {#1},
+
+  left\space extra/.code  = \tl_set:Nn \bd_left_extra_tl  {#1},
+  right\space extra/.code = \tl_set:Nn \bd_right_extra_tl {#1},
+  brace\space extra/.code = \tl_set:Nn \bd_brace_extra_tl {#1},
+  arrow\space extra/.code = \tl_set:Nn \bd_arrow_extra_tl {#1},
+
+  label\space xshift/.code = \tl_set:Nn \bd_label_xshift_tl {#1},
+  label\space yshift/.code = \tl_set:Nn \bd_label_yshift_tl {#1},
+
+  arrow/.is\space if=bd_draw_arrow,
+  arrow/.default=true,
+}
+
+% ---------------------------
+% Base TikZ styles
+% (TikZ keys like "rounded corners" need explicit \space under expl3)
+% ---------------------------
+\tikzset{
+  bracediagram/label/.style={
+    font=\sffamily,
+    inner\space sep=1pt,
+    fill=white, % hides the arrow behind the label
+  },
+  bracediagram/leftbox/.style={
+    draw,
+    rounded\space corners=2pt,
+    minimum\space width=\bd_box_width_tl,
+    minimum\space height=\bd_box_height_tl,
+    inner\space xsep=6pt,
+    inner\space ysep=2pt,
+    align=center,
+    font=\sffamily,
+    fill=black!6,
+  },
+  bracediagram/rightbox/.style={
+    draw,
+    rounded\space corners=2pt,
+    minimum\space width=\bd_box_width_tl,
+    minimum\space height=\bd_box_height_tl,
+    inner\space xsep=6pt,
+    inner\space ysep=2pt,
+    align=center,
+    font=\sffamily,
+    fill=yellow!25,
+  },
+  bracediagram/brace/.style={
+    decorate,
+    decoration={brace,amplitude=6pt},
+    very\space thick,
+  },
+  bracediagram/arrow/.style={
+    -{Stealth[length=3mm,width=2mm]},
+    very\space thick,
+  },
+}
+
+% ---------------------------
+% Helper: place a centered vertical column from a seq
+% ---------------------------
+\cs_new_protected:Nn \bd_place_column:nnnn
+  {
+    % #1 prefix, #2 seq, #3 x, #4 tikz options
+    \int_set:Nn \l_tmpa_int { \seq_count:N #2 }
+    \tl_set:Nx \l_tmpa_tl { \dim_eval:n { \bd_box_height_tl + \bd_row_sep_tl } }
+
+    \seq_map_indexed_inline:Nn #2
+      {
+        \pgfmathsetlengthmacro{\bd@y}
+          {((\int_use:N\l_tmpa_int-1)/2 - (##1-1))*(\l_tmpa_tl)}
+        \node (#1##1) at (#3,\bd@y) [#4] {##2};
+      }
+  }
+
+% ---------------------------
+% User command:
+% \BraceDiagram[<keys>]{left1;left2;...}{right1;right2;...}[brace label]
+% ---------------------------
+\NewDocumentCommand{\BraceDiagram}{ O{} m m O{} }
+  {
+    \group_begin:
+      \pgfkeys{/bracediagram,#1}
+
+      \seq_set_split:Nnn \l_bd_left_seq  { ; } {#2}
+      \seq_set_split:Nnn \l_bd_right_seq { ; } {#3}
+      \int_set:Nn \l_bd_left_int  { \seq_count:N \l_bd_left_seq }
+      \int_set:Nn \l_bd_right_int { \seq_count:N \l_bd_right_seq }
+
+      \begin{tikzpicture}[baseline=(bd-base.base)]
+        \coordinate (bd-base) at (0,0);
+
+        \bd_place_column:nnnn {bdL}{\l_bd_left_seq}{0}
+          {bracediagram/leftbox,\bd_left_extra_tl}
+
+        \bd_place_column:nnnn {bdR}{\l_bd_right_seq}{\bd_col_sep_tl}
+          {bracediagram/rightbox,\bd_right_extra_tl}
+
+        % Brace spanning left column
+        % Brace spanning left column (brace anchor names to avoid pgfmath errors)
+        \coordinate (bdBraceTop) at ($(bdL1.north\space east)+(\bd_brace_xsep_tl,0)$);
+        \coordinate (bdBraceBot) at
+          ($(bdL\int_use:N\l_bd_left_int.south\space east)+(\bd_brace_xsep_tl,0)$);
+
+        % Midpoint of the brace (used for arrow + label positioning)
+        \path (bdBraceTop) -- (bdBraceBot) coordinate[midway] (bdBraceMid);
+
+        % Compute right midpoint + draw arrow FIRST (so label sits on top)
+        \ifbd_draw_arrow
+          \int_compare:nNnT {\l_bd_right_int} > {0}
+            {
+              \path (bdR1.north\space west) -- (bdR\int_use:N\l_bd_right_int.south\space west)
+                coordinate[midway] (bdRightMid);
+              \draw[bracediagram/arrow,\bd_arrow_extra_tl]
+                (bdBraceMid) -- (bdRightMid);
+            }
+        \fi
+
+        % Draw brace
+        \draw[bracediagram/brace,\bd_brace_extra_tl]
+          (bdBraceTop) -- (bdBraceBot);
+
+        % Draw label LAST (so it doesn't get crossed by the arrow)
+        \tl_if_blank:nF {#4}
+          {
+            \node[bracediagram/label] at
+              ($(bdBraceMid)+(\bd_label_sep_tl+\bd_label_xshift_tl,\bd_label_yshift_tl)$) {#4};
+          }
+      \end{tikzpicture}
+    \group_end:
+  }
+
+\ExplSyntaxOff
+
