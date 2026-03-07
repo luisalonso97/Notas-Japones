@@ -55,6 +55,13 @@
       "\\\\end{document}",
       ""
     ]
+  },
+  "Furigana": {
+    "prefix": "furigana",
+    "description": "Furfigana template",
+    "body": [
+      "\\\\ruby{$1}{$2}$0"
+    ]
   }
 }
 
