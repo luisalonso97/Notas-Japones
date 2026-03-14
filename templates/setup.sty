@@ -32,13 +32,19 @@
 \setmainjfont{Noto Serif CJK JP}
 
 % Section style
+\setlength{\parindent}{0pt}
+
 \titleformat{\section}[block]
   {\normalfont\Large\bfseries\itshape}
   {\thesection}{1em}{}
   [\vspace{0.3ex}\titlerule]
 \titlespacing*{\section}{0pt}{2.0ex}{1.0ex}
 
-\setlength{\parindent}{0pt}
+% Subsection style (match section font)
+\titleformat{\subsection}[block]
+  {\normalfont\large\bfseries\itshape}
+  {\thesubsection}{1em}{}
+\titlespacing*{\subsection}{0pt}{1.5ex}{0.8ex}
 
 % Fancy footer
 \pagestyle{fancy}
