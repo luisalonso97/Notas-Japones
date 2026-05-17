@@ -2,8 +2,10 @@
 *.fdb_latexmk
 *.fls
 *.log
-*.synctex.gz
+*.synctex.gz*
+*.synctex*
 *.aux
 **build/*
 *.ltjruby
 *.bkp
+**speak_exs/**
