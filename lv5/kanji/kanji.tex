@@ -1,0 +1,111 @@
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2025 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
+
+\title{\ruby{漢|字}{かん|じ} LV5}
+\author{アロンゾ　ルイス}
+
+\setmainjfont{Noto Serif CJK JP}
+\usepackage{luatexja-fontspec}
+\usepackage{kanjicard} % Custom Kanji card
+\usepackage{fancyhdr}
+
+% --- Page style ---
+\pagestyle{fancy}
+\fancyhf{} % clear header/footer
+
+% Footer: name + copyright on left, page number on right
+\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+\fancyfoot[R]{\thepage}
+
+% Optional: remove header rule and keep a footer rule
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Increase space reserved for header area
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{6pt} % distance from header to text
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\begin{document}
+\setcounter{page}{1} % start page number here
+
+\raggedbottom
+\maketitle{}
+\thispagestyle{fancy}
+
+\begin{kanjicard}{時}{とき}{ジ}
+  \KExample{時}{とき}{Tiempo}
+  \KExample{四時}{よ・じ}{4:00}
+  \KExample{一時間}{いち・じ・かん}{Una hora}
+  \KExample{時計}{と・けい}{Reloj}
+\end{kanjicard}
+
+\begin{kanjicard}{間}{あいだ/ま}{カン}
+  \KExample{間}{あいだ}{Entre}
+  \KExample{一年間}{いち・ねん・かん}{Un año}
+  \KExample{間に合う}{ま・に・あ・う}{Llegar a tiempo}
+  \KExample{時間}{じ・かん}{Tiempo}
+\end{kanjicard}
+
+\begin{kanjicard}{場}{ば}{ジョウ}
+  \KExample{場所}{ばしょ}{Lugar}
+  \KExample{場合}{ば・あい}{Caso}
+  \KExample{広場}{ひろ・ば}{Plaza}
+  \KExample{サッカー場}{サッカー・じょう}{Cancha de futbol}
+\end{kanjicard}
+
+\begin{kanjicard}{所}{ところ}{ショ/ジョ}
+  \KExample{所}{ところ}{Lugar}
+  \KExample{研究所}{けん・きゅう・じょ}{Instituto de investigación}
+  \KExample{台所}{だい・どころ}{Cocina}
+  \KExample{住所}{じゅう・しょ}{Dirección}
+\end{kanjicard}
+
+\begin{kanjicard}{駅}{}{エキ}
+  \KExample{駅}{えき}{Estación}
+  \KExample{駅員}{えき・いん}{Empleado de estación}
+  \KExample{駅前}{えき・まえ}{Frente a la estación}
+\end{kanjicard}
+
+\begin{kanjicard}{出}{で・る/で・かける/だ・す}{ジュッ/ジュツ}
+  \KExample{出かける}{で・かける}{Salir}
+  \KExample{出ます}{で・ます}{Salir}
+  \KExample{出します}{だ・します}{Entregar/Sacar}
+  \KExample{出発}{しゅっ・ぱつ}{Partir}
+\end{kanjicard}
+
+\begin{kanjicard}{待}{ま・つ/まち}{タイ}
+  \KExample{待つ}{ま・つ}{Esperar}
+  \KExample{招待する}{じょう・たい・する}{Invitar}
+  \KExample{待合室}{まち・あい・しつ}{Sala de espera}
+\end{kanjicard}
+
+\begin{kanjicard}{止}{と・まる/と・める}{シ}
+  \KExample{止まる}{と・まる}{Detenerse} %が
+  \KExample{止める}{と・める}{Detener} %を
+  \KExample{中止}{ちゅう・し}{Cancelar/Suspender}
+  \KExample{通行止め}{つう・こう・ど・め}{Calle cerrada}
+\end{kanjicard}
+
+\end{document}
+
