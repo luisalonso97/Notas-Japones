@@ -19,6 +19,7 @@
 \RequirePackage[most]{tcolorbox}
 \RequirePackage{tabularx}
 \RequirePackage{luatexja-ruby}
+\RequirePackage{hyperref}
 
 \NewDocumentCommand{\ShowOrBlank}{m}{%
   \IfBlankTF{#1}{\rule{3cm}{0.4pt}}{#1}%
@@ -29,7 +30,7 @@
 }
 
 \NewDocumentEnvironment{kanjicard}{ m m m +b }
-% #1 = Kanji, #2 = onyomi, #3 = kunyomi, body = examples (rows via \KExample)
+% #1 = Kanji, #2 = kunyomi, #3 = onyomi, body = examples (rows via \KExample)
 {%
 \begin{tcolorbox}[
   enhanced,
@@ -42,7 +43,7 @@
   \noindent
   \begin{minipage}[t]{0.23\linewidth}
     \centering
-    {\fontsize{52}{56}\selectfont #1}
+    \href{https://jisho.org/search/#1}{\fontsize{52}{56}\selectfont #1}
   \end{minipage}\hfill
   \begin{minipage}[t]{0.73\linewidth}
     \begin{tcolorbox}[
@@ -71,4 +72,3 @@
 \end{tcolorbox}
 }
 {}
-
