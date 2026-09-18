@@ -1,0 +1,133 @@
+
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2025 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
+
+\title{\ruby{漢|字}{かん|じ} LV6}
+\author{アロンゾ　ルイス}
+
+\setmainjfont{Noto Serif CJK JP}
+\usepackage{luatexja-fontspec}
+\usepackage{kanjicard} % Custom Kanji card
+\usepackage{fancyhdr}
+
+% --- Page style ---
+\pagestyle{fancy}
+\fancyhf{} % clear header/footer
+
+% Footer: name + copyright on left, page number on right
+\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+\fancyfoot[R]{\thepage}
+
+% Optional: remove header rule and keep a footer rule
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Increase space reserved for header area
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{6pt} % distance from header to text
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\begin{document}
+\setcounter{page}{1} % start page number here
+
+\raggedbottom
+\maketitle{}
+\thispagestyle{fancy}
+
+\begin{kanjicard}{会}{あ・います}{カイ}
+  \KExample{会います}{あ・います}{Ver (persona), juntar}
+  \KExample{会議}{かい・ぎ}{Junta (trabajo)}
+  \KExample{会話}{かい・わ}{Conversación}
+\end{kanjicard}
+
+\begin{kanjicard}{本}{もと}{ホン}
+  \KExample{日本}{にほん}{Japón}
+  \KExample{本}{ほん}{Libro}
+  \KExample{本屋}{ほん・や}{Librería}
+\end{kanjicard}
+
+\begin{kanjicard}{支}{}{シ}
+  \KExample{支社}{し・しゃ}{Sucursal}
+  \KExample{支度}{し・たく}{Preparación/Preparativo}
+\end{kanjicard}
+
+\begin{kanjicard}{社}{}{シャ/ジャ}
+  \KExample{会社}{かい・しゃ}{Empresa}
+  \KExample{会社員}{かい・しゃ・いん}{Empleado}
+  \KExample{社会}{しゃ・かい}{Sociedad}
+  \KExample{本社}{ほん・しゃ}{Oficina principal}
+\end{kanjicard}
+
+\begin{kanjicard}{出}{で・ます}{シュッ}
+  \KExample{出ます}{で・ます}{Salir}
+  \KExample{出します}{だ・します}{Enviar [Enrtegar]/Sacar}
+  \KExample{出席}{しゅっ・せき}{Asistencia}
+\end{kanjicard}
+
+\begin{kanjicard}{張}{はる}{チョウ}
+  \KExample{出張}{しゅっ・ちょう}{Viaje de negocios}
+\end{kanjicard}
+
+\begin{kanjicard}{発}{}{パツ/ホツ}
+  \KExample{出発}{しゅっ・ぱつ}{Salida, partida}
+  \KExample{発表}{はっ・ぴょう}{Presentación}
+  \KExample{発音}{はつ・おん}{Pronunciación}
+\end{kanjicard}
+
+\begin{kanjicard}{空}{そら}{クウ}
+  \KExample{空}{そら}{Cielo}
+  \KExample{空気}{くう・き}{Mood, aire}
+  \KExample{空手}{から・て}{Karate}
+\end{kanjicard}
+
+\begin{kanjicard}{港}{みなと}{コウ}
+  \KExample{港}{みなと}{Puerto}
+  \KExample{空港}{くう・こう}{Aeropuerto}
+\end{kanjicard}
+
+\begin{kanjicard}{着}{き・ます}{チャク/ジャク}
+  \KExample{着ます}{き・ます}{Poner (ropa)}
+  \KExample{着きます}{つ・きます}{Llegar}
+\end{kanjicard}
+
+\begin{kanjicard}{到}{}{トウ}
+  \KExample{到着}{とう・ちゃく}{Llegada (aviones, barcos...)}
+\end{kanjicard}
+
+\begin{kanjicard}{前}{まえ}{セン/ゼン}
+  \KExample{前}{まえ}{Antes, previo}
+  \KExample{名前}{な・まえ}{Nombre}
+\end{kanjicard}
+
+\begin{kanjicard}{後}{あと}{ゴ/コウ}
+  \KExample{後}{あと}{Después}
+  \KExample{後ろ}{うし・ろ}{Detrás}
+\end{kanjicard}
+
+\begin{kanjicard}{午}{}{ゴ}
+  \KExample{午前}{ご・ぜん}{a.m.}
+  \KExample{午後}{ご・ご}{p.m.}
+\end{kanjicard}
+
+\end{document}
+
