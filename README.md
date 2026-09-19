@@ -21,11 +21,19 @@ sudo pacman -S noto-fonts-cjk
 ## Compilación
 
 ```bash
-latexmk -lualatex kanji.tex
+latexmk -cd -lualatex lv5/kanji/kanji.tex
 ```
 
-Importante tener usar el engine `lualatex` y tener el `.latexmkrc` para el
-enlazado correcto de las plantillas.
+Ejecuta el comando desde la raíz del repositorio. El `.latexmkrc` compartido
+añade `templates/` a la ruta de búsqueda, por lo que el mismo comando funciona
+para cualquier lección o archivo de kanji sin crear ni ajustar configuración
+por nivel. Por ejemplo:
+
+```bash
+latexmk -cd -lualatex lv6/lv6_leccion_13.tex
+```
+
+Importante usar el engine `lualatex`.
 
 ## 一年目 (2025)
 
@@ -76,4 +84,3 @@ Copyright (c) 2025 Luis Alonso
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
 International License (CC BY-SA 4.0). To view a copy of this license, visit:
 https://creativecommons.org/licenses/by-sa/4.0/
-
