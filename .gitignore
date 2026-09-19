@@ -9,3 +9,4 @@
 *.ltjruby
 *.bkp
 **speak_exs/**
+**generated/**
