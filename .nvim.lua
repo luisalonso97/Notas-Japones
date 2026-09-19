@@ -29,6 +29,10 @@ vim.keymap.set("v", "<localleader>jr", function()
 	vim.system({
 		"codex",
 		"exec",
+		"-m",
+		"gpt-5.6-luna",
+		"-c",
+		'model_reasoning_effort="medium"',
 		"--ephemeral",
 		"--sandbox",
 		"read-only",
