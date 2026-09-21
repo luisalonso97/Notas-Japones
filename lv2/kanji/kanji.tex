@@ -1,0 +1,96 @@
+% SPDX-License-Identifier: CC-BY-SA-4.0
+% Copyright (c) 2025 Luis Alonso
+%
+% This file is part of luis_alonso/Notas-Japones.
+%
+% Licensed under Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0).
+% You may share and adapt this material for any purpose,
+% as long as you provide attribution and distribute adaptations under the same license.
+%
+% License: https://creativecommons.org/licenses/by-sa/4.0/
+% Source:  https://git.lalonso.com/luis_alonso/Notas-Japones
+%
+% Note: Third-party content (if any) is excluded from this license and is marked where used.
+
+\documentclass[a4paper,lualatex,ja=standard,base=10pt]{bxjsarticle}
+
+\title{\ruby{漢|字}{かん|じ} LV2}
+\author{アロンゾ　ルイス}
+
+\setmainjfont{Noto Serif CJK JP}
+\usepackage{luatexja-fontspec}
+\usepackage{kanjicard} % Custom Kanji card
+\usepackage{fancyhdr}
+
+% --- Page style ---
+\pagestyle{fancy}
+\fancyhf{} % clear header/footer
+
+% Footer: name + copyright on left, page number on right
+\fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+\fancyfoot[R]{\thepage}
+
+% Optional: remove header rule and keep a footer rule
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Increase space reserved for header area
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{6pt} % distance from header to text
+
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyfoot[L]{Luis Alonso\ \copyright\ \the\year}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+\begin{document}
+\setcounter{page}{1} % start page number here
+
+\raggedbottom
+\maketitle{}
+\thispagestyle{fancy}
+
+\begin{kanjicard}{広}{ひろ・い}{コウ}
+  \KExample{広い}{ひろ・い}{Amplio}
+  \KExample{広場}{ひろ・ば}{Espacio abierto}
+\end{kanjicard}
+
+\begin{kanjicard}{狭}{せま・い}{キョウ/コウ}
+  \KExample{狭い}{せま・い}{Angosto}
+  \KExample{狭量}{きょう・りょう}{Cerrado de mente, intolerante}
+\end{kanjicard}
+
+\begin{kanjicard}{明}{あか・るい}{メイ}
+  \KExample{明るい}{あか・るい}{Iluminado, persona feliz}
+\end{kanjicard}
+
+\begin{kanjicard}{暗}{くら・い}{アン}
+  \KExample{暗い}{くら・い}{Oscuro}
+  \KExample{暗号}{あん・ごう}{Contraseña}
+\end{kanjicard}
+
+\begin{kanjicard}{大}{おお・きい}{ダイ/タイ}
+  \KExample{大きい}{おお・きい}{Grande}
+  \KExample{大切}{たい・せつ}{Importante}
+  \KExample{大好き}{だい・すき}{Gustar mucho}
+\end{kanjicard}
+
+\begin{kanjicard}{小}{ちい・さい}{ショウ}
+  \KExample{小さい}{ちい・さい}{Pequeño}
+  \KExample{小説}{しょう・せつ}{Novela}
+\end{kanjicard}
+
+\begin{kanjicard}{新}{あたら・しい}{シン}
+  \KExample{新しい}{あたら・しい}{Nuevo}
+  \KExample{新聞}{しん・ぶん}{Periodico}
+\end{kanjicard}
+
+\begin{kanjicard}{古}{ふる・い}{コ}
+  \KExample{古い}{ふる・い}{Viejo}
+  \KExample{中古}{ちゅう・こ}{Segunda mano}
+\end{kanjicard}
+
+\end{document}
